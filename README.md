@@ -9,6 +9,8 @@ A professional-grade backend RESTful service built with **Spring Boot** and **Ja
 * **Role-Based Security:** Secure endpoints using **JWT (JSON Web Tokens)** with specific access levels for Recruiters, and Candidates.
 * **Dynamic Job Filtering:** Advanced search capabilities using **JPA Specifications** for filtering by location, salary, and tech stack.
 * **Data Persistence:** Robust relational mapping with PostgreSQL and automated schema management.
+* **RESTful Best Practices:** Clear API design with structured JSON responses and global error handling.
+* **Containerized Deployment:** Ready-to-run environment using Docker and Docker Compose.
 
 ---
 
@@ -73,6 +75,7 @@ You can test the API endpoints directly:
 
 * **Multi-Stage Docker Builds:** Optimized for performance and small image sizes.
 * **Global Exception Handling:** Implemented `@ControllerAdvice` to provide consistent, user-friendly error messages.
+* **Dockerized Workflow:** Simplifies local development and ensures consistent environments across machines.
 
 ---
 
