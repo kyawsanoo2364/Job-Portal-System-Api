@@ -1,0 +1,512 @@
+{
+  "info": {
+    "_postman_id": "87313610-e99a-4b30-aac0-7608d9741264",
+    "name": "Job Portal",
+    "description": "A RESTful Job Portal API that enables employers to create and manage job postings, and allows candidates to browse and apply for jobs. The system supports role-based access control, authentication using Bearer tokens, and secure management of job applications.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18299817",
+    "_collection_link": "https://go.postman.co/collection/18299817-87313610-e99a-4b30-aac0-7608d9741264?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Apply Job",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"coverLetter\":\"Marcus is a seasoned backend specialist with over 12 years of experience in high-traffic environments. He transitioned from building monolithic Java Enterprise systems to architecting event-driven microservices. He is an active contributor to open-source projects and frequently speaks at tech conferences about system scalability and database optimization\",\n  \"fileId\":\"7\",\n  \"jobId\":\"2\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/job/applications/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "job",
+            "applications",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Job",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\":\"Full Stack Developer\",\n  \"description\":\"Job description\",\n  \"minSalary\":100000,\n  \"maxSalary\":500000,\n  \"isNegotiable\":false,\n  \"location\":\"Yangon\",\n  \"salaryPeriod\":\"YEARLY\",\n  \"jobTypes\":[\n    \"REMOTE\",\n    \"FULL_TIME\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/jobs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "jobs"
+          ]
+        },
+        "description": "Only employers are allowed to create a new job posting.This endpoint requires authentication with a valid Bearer token.\n\n> Allowed SalaryPeriods: **HOURLY, DAILY, WEEKLY, MONTHLY, YEARLY**.  \nAllowed JobTypes: **FULL_TIME, PART_TIME, REMOTE, ON_SITE, HYBRID, CONTRACT**."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete File",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/resumes/{fileId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "resumes",
+            "{fileId}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Job Application",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/job/applications/{applicationId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "job",
+            "applications",
+            "{applicationId}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Job",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/jobs/{jobId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "jobs",
+            "{jobId}"
+          ]
+        },
+        "description": "Only Employers are delete their job posting."
+      },
+      "response": []
+    },
+    {
+      "name": "File Upload",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "value": null
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/resumes/file/upload",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "resumes",
+            "file",
+            "upload"
+          ]
+        },
+        "description": "Only Candidates are allowed to upload resume file."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Application",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/job/applications/all/{jobId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "job",
+            "applications",
+            "all",
+            "{jobId}"
+          ]
+        },
+        "description": "Employers can get applications for their jobs."
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Jobs",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/jobs",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "jobs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get File",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/uploads/files/Kyaw_San_Oo_Backend_Developer_CV_Full.pdf",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "uploads",
+            "files",
+            "Kyaw_San_Oo_Backend_Developer_CV_Full.pdf"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Job by Job Id",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/jobs/{jobId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "jobs",
+            "{jobId}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all file",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/resumes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "resumes"
+          ]
+        },
+        "description": "Candidates can get all their uploaded resume files"
+      },
+      "response": []
+    },
+    {
+      "name": "Sign In",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\":\"su@gmail.com\",\n  \"password\":\"123456\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/sign-in",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "sign-in"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Sign up",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\":\"Su Su\",\n  \"lastName\":\"Mya\",\n  \"email\":\"su@gmail.com\",\n  \"password\":\"123456\",\n  \"role\":\"CANDIDATE\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/sign-up",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "auth",
+            "sign-up"
+          ]
+        },
+        "description": "The 'role' field only accepts: **EMPLOYER** or **CANDIDATE**."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Job",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\":\"Java Backend Developer(Post 1)\",\n  \"description\":\"Job description\",\n  \"minSalary\":300,\n  \"maxSalary\":1000,\n  \"isNegotiable\":false,\n  \"location\":\"Yangon\",\n  \"salaryPeriod\":\"MONTHLY\",\n  \"jobTypes\":[\n    \"ON_SITE\",\n    \"FULL_TIME\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/jobs/{jobId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "jobs",
+            "{jobId}"
+          ]
+        },
+        "description": "Employers can update their job."
+      },
+      "response": []
+    },
+    {
+      "name": "Update Filename",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "undefined",
+              "type": "any"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"filename\":\"SU_CV\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/resumes/{fileId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "resumes",
+            "{fileId}"
+          ]
+        },
+        "description": "Candidates can update their uploaded resume file name"
+      },
+      "response": []
+    }
+  ]
+}
