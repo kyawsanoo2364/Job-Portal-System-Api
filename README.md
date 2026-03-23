@@ -32,8 +32,8 @@ A professional-grade backend RESTful service built with **Spring Boot** and **Ja
 
 1.  **Clone the repository:**
     ```bash
-    git clone [git url]
-    cd jobportal-project
+    git clone https://github.com/kyawsanoo2364/Job-Portal-System-Api.git
+    cd Job-Portal-System-Api
     ```
 
 2.  **Environment Setup:**
